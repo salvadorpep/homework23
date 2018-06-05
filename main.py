@@ -68,7 +68,15 @@ class MessageNewHandler(BaseHandler):
         return self.render_template("new.html", params=params)
 
     def post(self):
-        pass
+        tmp_sender = self.request.get("sender")
+        tmp_recipient = self.request.get("recipient")
+        tmp_subject = self.request.get("subject")
+        tmp_body = self.request.get("body")
+
+        msg = Message(sender=tmp_sender, recipient=tmp_recipient, subject=tmp_subject, body=tmp_body)
+        msg.put()
+
+        return self.write(result)
 
 class WeatherHandler(BaseHandler):
     def get(self):

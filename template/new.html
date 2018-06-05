@@ -3,6 +3,21 @@
 {% block title %}New Message{% endblock title %}
 
 {% block page_content %}
-    <h1>New Message</h1>
+    <h1>Write your New Message</h1>
+
+        <form method="post" action="/new">
+            <p>Write down your email</p>
+            <input name="sender">
+            <p>Write down the recipient's email</p>
+            <input name="recipient">
+            <p>Subject</p>
+            <input name="subject">
+            <p>Your Message</p>
+            <input name="body">
+
+            <br>
+
+            <button type="submit">Send</button>
+        </form>
 
 {% endblock page_content %}
