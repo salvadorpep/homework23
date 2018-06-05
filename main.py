@@ -36,13 +36,14 @@ class MainHandler(BaseHandler):
 
 class InboxHandler(BaseHandler):
     def get(self):
-        messages = Message.query().fetch()
+        messages = Message.query(Message.recipient = user.email).fetch()
         params = {"messages": messages}
         return self.render_template("inbox.html", params=params)
 
 class OutboxHandler(BaseHandler):
     def get(self):
-        params = {}
+        messages = Message.query(Message.sender = user.email).fetch()
+        params = {"messages": messages}
         return self.render_template("outbox.html", params=params)
 
 class MessageViewHandler(BaseHandler):

@@ -4,5 +4,8 @@
 
 {% block page_content %}
     <h1>Outbox</h1>
-
+    {% for m in messages %}
+    <p><a href="/message/{{ m.key.id() }}">{{m.subject}}</a></p>
+    <p><i>{{m.datetime}}</i></p>
+    {% endfor %}
 {% endblock page_content %}
